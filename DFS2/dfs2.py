@@ -146,7 +146,14 @@ def put(new_dir_path):
 	# create file folder for chunks
 	file_folder = name1.split('_')[0]
 	new_folder_path = os.getcwd() +'\\' +other_client +'\\' +file_folder
-	
+	if os.path.isdir(other_client) == False:
+		try:  
+			os.mkdir(other_client)
+			# print ("Successfully created the folder %s " % new_folder_path)	
+			pass
+		except OSError:
+			print ("Creation of the folder %s failed" % other_client)
+
 	if os.path.isdir(new_folder_path) == False:
 		try:  
 			os.mkdir(new_folder_path)
@@ -174,10 +181,10 @@ def put(new_dir_path):
 		conn.send(response.encode())		
 	
 	# receive chunk 2 name and data 
-	other_client = conn.recv(1024).decode()
+	# other_client = conn.recv(1024).decode()
 	name2 = conn.recv(1024).decode()
 	chunk2 = conn.recv(buffersize).decode()
-	print(chunk2)
+	# print(chunk2)
 	print('Receiving ' +name2 +'...\n')	
 
 	# write chunk2 to file folder

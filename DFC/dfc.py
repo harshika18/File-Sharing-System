@@ -542,8 +542,8 @@ def client():
 		# chunk2 name and data 
 		for i in range(0,4):
 			try:
-				conns[i].send(other_client.encode())
-				time.sleep(0.5)
+				# conns[i].send(other_client.encode())
+				# time.sleep(0.5)
 				conns[i].send(dfss[i][1].encode())
 				time.sleep(0.5)				
 				# conns[i].send(other_client.encode())
